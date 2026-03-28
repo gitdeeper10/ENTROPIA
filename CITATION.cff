@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use ENTROPIA in your research, please cite it as follows."
+title: "ENTROPIA: Statistical Dynamics of Information Dissipation in Complex Non-Linear Digital Systems"
+authors:
+  - family-names: "Baladi"
+    given-names: "Samir"
+    email: "gitdeeper@gmail.com"
+    orcid: "https://orcid.org/0009-0003-8903-0029"
+    affiliation: "Ronin Institute / Rite of Renaissance"
+version: 1.0.0
+date-released: 2026-03-28
+doi: 10.5281/zenodo.19183878
+url: "https://entropia-lab.netlify.app"
+repository-code: "https://github.com/gitdeeper10/entropia"
+license: "MIT"
+keywords:
+  - entropy
+  - thermodynamics
+  - information-theory
+  - phase-transition
+  - system-failure
+  - prediction
+  - statistical-mechanics
+  - complex-systems
+  - non-linear-dynamics
+abstract: "ENTROPIA is a revolutionary theoretical framework that treats digital information as a physical thermodynamic entity governed by the same statistical laws that describe molecular disorder in classical physics. The central achievement is the derivation of the Unified Dissipation State Function (Sₜₒₜₐₗ), which merges Boltzmann's statistical entropy with Shannon's information entropy into a single master equation governing the thermodynamic behavior of information under computational stress. The framework achieves 94.3% accuracy in predicting collapse events in synthetic benchmarks and establishes the theoretical foundation for entropy-resistant artificial intelligence architectures."
+
+preferred-citation:
+  type: article
+  title: "ENTROPIA: Statistical Dynamics of Information Dissipation in Complex Non-Linear Digital Systems"
+  authors:
+    - family-names: "Baladi"
+      given-names: "Samir"
+  journal: "Entropy Research Lab"
+  volume: 1
+  issue: 1
+  pages: "1-47"
+  year: 2026
+  doi: 10.5281/zenodo.19183878
+  url: "https://entropia-lab.netlify.app/paper"
+
+contact:
+  - name: "Samir Baladi"
+    email: "gitdeeper@gmail.com"
+    affiliation: "Ronin Institute / Rite of Renaissance"

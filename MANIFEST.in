@@ -1,0 +1,60 @@
+# ENTROPIA Manifest File
+# Includes additional files in source distribution
+
+# Core files
+include README.md
+include LICENSE
+include NOTICE
+include AUTHORS.md
+include CHANGELOG.md
+include SECURITY.md
+include CODE_OF_CONDUCT.md
+include CONTRIBUTING.md
+include INSTALL.md
+include DEPLOY.md
+include COMPLETION.md
+
+# Configuration
+include pyproject.toml
+include setup.cfg
+include setup.py
+include requirements.txt
+include requirements-dev.txt
+
+# Data files
+recursive-include src/entropia/data *.json
+recursive-include src/entropia/data *.yaml
+recursive-include src/entropia/data *.csv
+
+# Examples
+recursive-include examples *.py
+recursive-include examples *.ipynb
+recursive-include examples/data *.csv
+
+# Documentation
+recursive-include docs *.rst
+recursive-include docs *.md
+recursive-include docs/source *.rst
+recursive-include docs/source *.py
+
+# Type hints
+recursive-include src *.pyi
+
+# Testing
+recursive-include tests *.py
+recursive-include tests/fixtures *.json
+recursive-include tests/fixtures *.csv
+
+# Exclude unnecessary files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .DS_Store
+global-exclude *.egg-info
+global-exclude .git*
+global-exclude .pytest_cache
+global-exclude .coverage
+global-exclude htmlcov
+global-exclude .mypy_cache
+global-exclude .venv
+global-exclude venv

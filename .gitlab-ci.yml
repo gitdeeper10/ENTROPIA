@@ -1,0 +1,178 @@
+# ENTROPIA GitLab CI/CD Pipeline
+# Thermodynamic Framework for Information Systems
+
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+  - benchmark
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PYTHON_VERSION: "3.11"
+  ENTROPIA_ENV: "testing"
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq libopenblas-dev
+  - python -V
+  - python -m venv .venv
+  - source .venv/bin/activate
+  - pip install --upgrade pip
+  - pip install -e ".[dev]"
+
+# Linting Stage
+lint:
+  stage: lint
+  script:
+    - echo "Running linters..."
+    - black --check src/ tests/
+    - isort --check-only src/ tests/
+    - flake8 src/ tests/
+    - mypy src/
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Unit Tests
+unit-tests:
+  stage: test
+  script:
+    - echo "Running unit tests..."
+    - pytest tests/ -m "not slow" --cov=entropia --cov-report=term --cov-report=html
+  coverage: '/TOTAL.*\s+(\d+%)$/'
+  artifacts:
+    paths:
+      - htmlcov/
+    expire_in: 1 week
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Integration Tests
+integration-tests:
+  stage: test
+  script:
+    - echo "Running integration tests..."
+    - pytest tests/ -m "integration" --timeout=300
+  only:
+    - merge_requests
+    - main
+  when: manual
+
+# Simulation Tests
+simulation-tests:
+  stage: test
+  script:
+    - echo "Running simulation tests..."
+    - entropia test --env E-ENV-01 --nodes 1000 --duration 60
+    - entropia test --env E-ENV-02 --nodes 10000 --duration 120
+  only:
+    - main
+  when: manual
+  tags:
+    - large
+
+# Build Package
+build-package:
+  stage: build
+  script:
+    - echo "Building package..."
+    - python -m build
+    - twine check dist/*
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  only:
+    - tags
+    - main
+
+# Build Docker Image
+build-docker:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    DOCKER_LATEST: $CI_REGISTRY_IMAGE:latest
+  script:
+    - echo "Building Docker image..."
+    - docker build -t $DOCKER_IMAGE -t $DOCKER_LATEST .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $DOCKER_IMAGE
+    - docker push $DOCKER_LATEST
+  only:
+    - main
+  when: manual
+
+# Documentation
+docs:
+  stage: build
+  script:
+    - echo "Building documentation..."
+    - cd docs
+    - make html
+    - mv _build/html ../public/
+  artifacts:
+    paths:
+      - public/
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+
+# Deploy to Netlify
+deploy-netlify:
+  stage: deploy
+  image: node:latest
+  script:
+    - npm install -g netlify-cli
+    - netlify deploy --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --dir=public --prod
+  only:
+    - main
+  dependencies:
+    - docs
+  when: manual
+
+# Performance Benchmark
+benchmark:
+  stage: benchmark
+  script:
+    - echo "Running benchmarks..."
+    - pytest tests/benchmarks/ --benchmark-only --benchmark-json=benchmark.json
+    - python scripts/compare_benchmarks.py
+  artifacts:
+    paths:
+      - benchmark.json
+    expire_in: 1 month
+  only:
+    - main
+  when: manual
+  tags:
+    - benchmark
+
+# Release
+release:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "Creating release..."
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    description: 'ENTROPIA $CI_COMMIT_TAG - Thermodynamic Framework for Information Systems'
+    tag_name: $CI_COMMIT_TAG
+    assets:
+      links:
+        - name: 'Package'
+          url: 'https://gitlab.com/$CI_PROJECT_PATH/-/jobs/artifacts/$CI_COMMIT_TAG/raw/dist/entropia-$CI_COMMIT_TAG-py3-none-any.whl?job=build-package'
+  only:
+    - tags

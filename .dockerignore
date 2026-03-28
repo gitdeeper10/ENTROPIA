@@ -1,0 +1,103 @@
+# ENTROPIA Docker Ignore File
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.egg-info/
+.eggs/
+*.egg
+venv/
+env/
+.venv/
+.venv*/
+
+# Version Control
+.git/
+.gitignore
+.gitattributes
+.gitlab-ci.yml
+.github/
+.gitmodules
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.cover
+.hypothesis/
+benchmark.json
+.benchmarks/
+
+# Documentation
+docs/_build/
+docs/source/_build/
+site/
+*.ipynb_checkpoints/
+*.ipynb
+!examples/*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Distribution
+build/
+dist/
+*.whl
+*.tar.gz
+*.tgz
+
+# Environment
+.env
+.env.*
+.env.local
+.env.*.local
+*.key
+*.pem
+*.crt
+secrets/
+
+# Data
+data/
+output/
+logs/
+*.log
+*.csv
+*.h5
+*.parquet
+*.npy
+*.db
+simulation_results/
+
+# Project specific
+Netlify/
+.github/
+.gitlab/
+examples/output/
+dashboard_cache/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+Dockerfile*
+
+# CI/CD
+.gitlab-ci.yml
+.pre-commit-config.yaml
+.readthedocs.yaml
+
+# Misc
+*.bak
+*.backup
+*.old
+*.tmp
+*.temp

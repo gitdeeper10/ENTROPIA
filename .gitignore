@@ -1,0 +1,175 @@
+# ENTROPIA - Git Ignore File
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+.mypy_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb
+!docs/source/notebooks/*.ipynb
+
+# Environment files
+.env
+.env.local
+.env.*.local
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Project specific
+data/
+output/
+logs/
+*.log
+*.csv
+*.h5
+*.parquet
+*.npy
+
+# Simulation outputs
+simulation_results/
+*.out
+*.err
+
+# Dashboard temporary files
+dashboard_cache/
+*.db
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Secrets
+*.key
+*.pem
+*.crt
+secrets/
+config.local.yaml
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# JAX compilation cache
+jax_cache/
+
+# Benchmark results
+.benchmarks/
+
+# Documentation build
+docs/_build/
+docs/api/
+site/
+
+# Example outputs
+examples/output/
+examples/*.png
+examples/*.html
+
+# Netlify
+.netlify/

@@ -1,0 +1,52 @@
+ENTROPIA - Statistical Dynamics of Information Dissipation
+Copyright (c) 2026 Samir Baladi
+
+This product includes software developed by:
+- The ENTROPIA Project (https://entropy.netlify.app)
+- Ronin Institute / Rite of Renaissance
+
+Third-party components:
+
+NumPy
+Copyright (c) 2005-2024, NumPy Developers.
+Licensed under the BSD 3-Clause License.
+
+SciPy
+Copyright (c) 2001-2002 Enthought, Inc. 2003-2024, SciPy Developers.
+Licensed under the BSD 3-Clause License.
+
+Pandas
+Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+Licensed under the BSD 3-Clause License.
+
+Matplotlib
+Copyright (c) 2012-2024 Matplotlib Development Team.
+Licensed under the Matplotlib License (BSD-compatible).
+
+Plotly
+Copyright (c) 2012-2024 Plotly, Inc.
+Licensed under the MIT License.
+
+Dash
+Copyright (c) 2017-2024 Plotly, Inc.
+Licensed under the MIT License.
+
+Click
+Copyright (c) 2014 Armin Ronacher.
+Licensed under the BSD 3-Clause License.
+
+JAX
+Copyright (c) 2018-2024 Google LLC.
+Licensed under the Apache License 2.0.
+
+For complete license details, see the respective package documentation.
+
+This software is provided "AS IS" without warranty of any kind.
+
+Project Information:
+- Website: https://entropy.netlify.app
+- Repository: https://github.com/gitdeeper9/entropia
+- Author: Samir Baladi (gitdeeper@gmail.com)
+- ORCID: 0009-0003-8903-0029
+
+"When we learn to read entropy in our machines, we gain sovereignty over the digital world."

@@ -1,0 +1,33 @@
+# ENTROPIA Core Requirements
+# Thermodynamic Framework for Information Systems
+
+# Numerical Computing
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+numba>=0.57.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.14.0
+dash>=2.9.0
+dash-bootstrap-components>=1.4.0
+
+# CLI & Configuration
+click>=8.1.0
+pyyaml>=6.0
+tqdm>=4.65.0
+
+# Parallel Processing
+joblib>=1.2.0
+
+# Optional: JAX for GPU acceleration
+# jax>=0.4.0
+# jaxlib>=0.4.0
+
+# Optional: ObsPy for seismic data (bio-seismic extensions)
+# obspy>=1.4.0
+
+# Optional: Network analysis
+# networkx>=3.0
+# python-igraph>=0.10.0
